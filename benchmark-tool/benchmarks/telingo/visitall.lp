@@ -1,15 +1,15 @@
-#program dynamic.
-{ occurs(some_action) }.
-atrobot(N) :- _connected(C,N), C != N, not atother(N), occurs(some_action).
-atother(N) :- _connected(C,N), C != N, atrobot(O), O != N, occurs(some_action).
+% #program dynamic.
+{ occurs(some_action) } :- not &initial.
+atrobot(N) :- connected(C,N), C != N, not atother(N), occurs(some_action), not &initial.
+atother(N) :- connected(C,N), C != N, atrobot(O), O != N, occurs(some_action), not &initial.
 
-move(C,N) :- 'atrobot(C), atrobot(N), _connected(C,N), C != N.
-done     :- move(C,N).
+move(C,N) :- &prev(atrobot(C)), atrobot(N), connected(C,N), C != N, not &initial.
+done     :- move(C,N), not &initial.
 
-:- not done, occurs(some_action).
+:- not done, occurs(some_action), not &initial.
 
-visited(X) :- 'visited(X).
-visited(X) :- atrobot(X).
+visited(X) :- &prev(visited(X)), not &initial.
+visited(X) :- atrobot(X), not &initial.
 
-#program final.
-:- _visit(X), not visited(X).
+% #program final.
+:- visit(X), not visited(X), &final.
