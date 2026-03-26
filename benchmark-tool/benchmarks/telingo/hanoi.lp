@@ -1,23 +1,23 @@
-#program always.
+% #program always.
 :- on(N1,N), N1>=N.
 
-#program dynamic.
-{ occurs(some_action) }.
-1 { move(N) : _disk(N) } 1 :- occurs(some_action).
+% #program dynamic.
+{ occurs(some_action) } :- not &initial.
+1 { move(N) : disk(N) } 1 :- occurs(some_action), not &initial.
 
-1 { where(N) : _disk(N) }1 :- occurs(some_action).
+1 { where(N) : disk(N) }1 :- occurs(some_action), not &initial.
 
-:- move(N), N<5.
+:- move(N), N<5, not &initial.
 
-:- 'on(N,N1), move(N).
+:- &prev(on(N,N1)), move(N), not &initial.
 
-:- 'on(N,N1), where(N).
+:- &prev(on(N,N1)), where(N), not &initial.
 
-:- move(N), 'move(N).
+:- move(N), &prev(move(N)), not &initial.
 
-on(N1,N) :- move(N), where(N1).
-on(N,N1) :- 'on(N,N1), not move(N1).
+on(N1,N) :- move(N), where(N1), not &initial.
+on(N,N1) :- &prev(on(N,N1)), not move(N1), not &initial.
 
-#program final.
-:- not on(N,N1), _ongoal(N1,N).
-:- on(N,N1), not _ongoal(N1,N).
+% #program final.
+:- not on(N,N1), ongoal(N1,N), &final.
+:- on(N,N1), not ongoal(N1,N), &final.
