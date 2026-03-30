@@ -87,9 +87,6 @@ dir(south,-1).
 
 robot(R) :- pos(R,_,_).
 
-pos_r(R,1,I) :- pos(R,I,_).
-pos_r(R,-1,J) :- pos(R,_,J).
-
 barrier(I+1,J,west) :- barrier(I,J,east), dim(I), dim(J), dim(I+1).
 barrier(I,J+1,north) :- barrier(I,J,south), dim(I), dim(J), dim(J+1).
 barrier(I-1,J,east) :- barrier(I,J,west), dim(I), dim(J), dim(I-1).

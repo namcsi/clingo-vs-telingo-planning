@@ -1,3 +1,6 @@
+pos_r(R,1,I) :- pos(R,I,_), &initial.
+pos_r(R,-1,J) :- pos(R,_,J), &initial.
+
 % #program dynamic.
 { occurs(some_action) } :- &initial.
 1 <= { selectRobot(R) : robot(R) } <= 1 :- occurs(some_action), not &initial.
