@@ -46,8 +46,6 @@ package(P) :- at(P,L), not truck(P).
 location(L) :- fuelcost(_,L,_).
 location(L) :- fuelcost(_,_,L).
 locatable(O) :- at(O,L).
-at_t(O,L) :- at(O,L).
-fuel_t(T,F) :- fuel(T,F).
 
 action(unload(P,T,L)) :- package(P), truck(T), location(L).
 action(load(P,T,L)) :- package(P), truck(T), location(L).
