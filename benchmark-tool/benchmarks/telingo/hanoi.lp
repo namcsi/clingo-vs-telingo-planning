@@ -1,3 +1,5 @@
+on(N1,N) :- on0(N,N1), &initial.
+
 % #program always.
 :- on(N1,N), N1>=N.
 

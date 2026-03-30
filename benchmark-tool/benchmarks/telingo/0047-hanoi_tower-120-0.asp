@@ -1,28 +1,4 @@
 steps(23).
-time(0).
-time(1).
-time(2).
-time(3).
-time(4).
-time(5).
-time(6).
-time(7).
-time(8).
-time(9).
-time(10).
-time(11).
-time(12).
-time(13).
-time(14).
-time(15).
-time(16).
-time(17).
-time(18).
-time(19).
-time(20).
-time(21).
-time(22).
-time(23).
 disk(1).
 disk(2).
 disk(3).
@@ -78,4 +54,3 @@ ongoal(8,7).
 ongoal(9,8).
 ongoal(10,9).
 ongoal(20,10).
-on(N1,N) :- on0(N,N1).
