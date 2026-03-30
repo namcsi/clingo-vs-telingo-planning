@@ -1,3 +1,4 @@
+% #program initial
 pos_r(R,1,I) :- pos(R,I,_), &initial.
 pos_r(R,-1,J) :- pos(R,_,J), &initial.
 

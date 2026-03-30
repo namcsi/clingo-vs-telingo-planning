@@ -1,3 +1,4 @@
+% #program initial.
 on(N1,N) :- on0(N,N1), &initial.
 
 % #program always.

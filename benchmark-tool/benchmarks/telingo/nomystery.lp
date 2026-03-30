@@ -1,3 +1,4 @@
+% #program initial
 at_t(O,L) :- at(O,L), &initial.
 fuel_t(T,F) :- fuel(T,F), &initial.
 
