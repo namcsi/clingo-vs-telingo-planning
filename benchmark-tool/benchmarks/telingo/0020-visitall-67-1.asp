@@ -270,4 +270,3 @@ visit(loc_x7_y5).
 visit(loc_x7_y6).
 visit(loc_x7_y7).
 steps(67).
-atrobot(X) :- at(X).

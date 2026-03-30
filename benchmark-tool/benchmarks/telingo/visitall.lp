@@ -1,3 +1,5 @@
+atrobot(X) :- at(X), &initial.
+
 % #program dynamic.
 { occurs(some_action) } :- not &initial.
 atrobot(N) :- connected(C,N), C != N, not atother(N), occurs(some_action), not &initial.
